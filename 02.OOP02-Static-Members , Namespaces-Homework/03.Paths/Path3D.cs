@@ -1,0 +1,43 @@
+﻿using System.Collections.Generic;
+using System.Text;
+using _01.Point3D;
+
+namespace _03.Paths
+{
+    class Path3D
+    {
+        private readonly List<Point3D> path = new List<Point3D>();
+
+        //ctor
+        public Path3D(List<Point3D> list)
+        {
+            this.path=list;
+        }
+               
+        //prop
+        public List<Point3D> Path
+        {
+            get { return this.path; }
+        }
+
+        //method
+        public void AddPoints(params Point3D[] list)
+        {
+            foreach (var point3D in list)
+            {
+                this.path.Add(point3D);
+            }
+        }
+
+        public override string ToString()
+        {
+            StringBuilder result = new StringBuilder("Path:\n");
+            for (int i = 0; i < this.Path.Count; i++)
+            {
+                result.AppendFormat("point{0}: x={1} y={2} z={3}\n", i + 1, this.Path[i].X, this.Path[i].Y, this.Path[i].Z);
+            }
+
+            return result.ToString();
+        }
+    }
+}
